@@ -1,0 +1,25 @@
+---
+- name: TASKS
+  hosts: node0
+  become: true
+
+  vars: 
+    - TEMP: /tmp/
+
+  tasks:
+    - name: FOREVER START COMMAND
+      command: forever start "/home/vagrant/App/main.js" 5000
+
+    - name: SECURITY COMMAND
+      apt: name={{item}} state=latest
+      with_items:
+        - bash
+        - openssl
+        - openssh-client
+        - openssh-server
+
+    - shell: ls -1 "{{TEMP}}"
+      register: contents
+
+    - file: path={{TEMP}}{{ item }} state=absent
+      with_items: {{ contents.stdout_lines }}

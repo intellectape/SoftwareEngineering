@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HW3 - Aditya</title>
+
+    <!--All the CSS files and links are written below:-->
+    <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+
+    <!--All the JavaScript files and sources are written below:-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+    <div class="col-md-3">
+        <span class="user-profile">
+            <h2>Software Engineering</h2>
+            <h1>HW3</h1>
+            <h2>Aditya Bhardwaj  abhardw2@ncsu.edu   200154815</h2>
+        </span>
+    </div>
+
+    <div class="col-md-8">
+        <span class="tweet-bar">
+            <img class="img-circle" src="https://pbs.twimg.com/profile_images/798021632812085248/7MbUQmeP_400x400.jpg" width="100" height="100">
+            <h2><a href="https://twitter.com/adi_b09">Aditya Bhardwaj</a></h2>
+        </span>
+
+        <ul class="timeline">
+            <div data-bind="foreach: tweetsData">
+                <div class="row">
+                    <div class="person-image">
+                        <img data-bind="attr:{src: userImage}" />
+                    </div>
+                    <div class="tweet-area">
+                        <div class="tweets">
+                            <b data-bind="text: usertName"></b>
+                            <small data-bind="text: atAndTime"></small>
+                            <small data-bind="text: time"></small>
+                            <p data-bind="text: post"></p>
+                            <div data-bind="if: tweeted_Image">
+                                <img width="100%" height="100%" data-bind="attr:{src: tweeted_Image}" />
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="icon-mail-reply" data-toggle="modal" data-target="#myModal" data-toggle="tooltip" data-placement="top" title="Reply"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="icon-retweet" data-toggle="modal" data-target="#myModal" data-toggle="tooltip" data-placement="top" title="Retweet">
+                                        <small data-bind="text: no_of_retweets"></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="glyphicon glyphicon-heart" data-toggle="tooltip" data-placement="top" title="Like">
+                                        <small data-bind="text: number_of_likes"></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <i class="fa fa-circle-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </ul>
+
+    </div>
+
+    <script type="text/javascript">
+        ko.applyBindings({
+            tweetsData: [{
+                    usertName: 'NetApp',
+                    atAndTime: '@NetApp ',
+                    time: '· 31m',
+                    post: '#SEGAM2016 is less than one week away! Make sure you stop by booth #2145. For more information, visit: http://nt-ap.com/2dVfDrr',
+                    userImage: 'https://pbs.twimg.com/profile_images/684494030390951936/vcPfrub9.jpg',
+                    tweeted_Image: 'https://pbs.twimg.com/media/Cugud4gW8AAJIFI.jpg:large',
+                    no_of_retweets: '2',
+                    number_of_likes: '5'
+                }, {
+                    usertName: 'DevOps Summit',
+                    atAndTime: '@DevOpsSummit',
+                    time: '· 4h',
+                    post: '#Join @HrScheele Nov 1-3 in Silicon Valley ▸ http://bit.ly/2amHFsi  @Loodse #IoT #M2M #API #DevOps #APM #Monitoring #DigitalTransformation',
+                    userImage: 'https://pbs.twimg.com/profile_images/769329109629558784/a4axZDO-.jpg',
+                    tweeted_Image: null,
+                    no_of_retweets: '22',
+                    number_of_likes: '59'
+                },
+
+                {
+                    usertName: 'Yarn',
+                    atAndTime: '@yarnpkg',
+                    time: '· 6h',
+                    post: 'Secure: Yarn uses checksums to verify the integrity of every installed package before its code is executed.',
+                    userImage: 'https://pbs.twimg.com/profile_images/778422085639032832/44mC-kJ3.jpg',
+                    tweeted_Image: null,
+                    no_of_retweets: '33',
+                    number_of_likes: '56'
+                },
+
+                {
+                    usertName: 'TechCrunch',
+                    atAndTime: '@TechCrunch',
+                    time: '· 8h',
+                    post: 'Only two days left to submit your Startup Battlefield application! http://tcrn.ch/2e365qX  #TCDisrupt',
+                    userImage: 'https://pbs.twimg.com/profile_images/615392662233808896/EtxjSSKk.jpg',
+                    tweeted_Image: 'https://pbs.twimg.com/media/CuhBdohW8AAr8_r.jpg',
+                    no_of_retweets: '174',
+                    number_of_likes: '89'
+                }
+            ]
+        });
+    </script>
+
+
+
+</body>
+
+</html>
